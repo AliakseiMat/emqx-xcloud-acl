@@ -12,7 +12,7 @@
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
 
--module(emqx_acl_xcloud).
+-module(emqx_xcloud_acl).
 
 -behaviour(emqx_acl_mod).
 

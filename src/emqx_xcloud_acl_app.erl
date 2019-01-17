@@ -12,7 +12,7 @@
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
 
--module(emqx_acl_xcloud_app).
+-module(emqx_xcloud_acl_app).
 
 -behaviour(application).
 
@@ -23,7 +23,7 @@
 start(_StartType, _StartArgs) ->
     emqx_logger:error("Plugin xcloud acl started ..."),
     io:format("Plugin xcloud acl started ...~n"),
-    {ok, Sup} = emqx_auth_redis_sup:start_link(),
+    {ok, Sup} = emqx_xcloud_acl_sup:start_link(),
  %%   if_cmd_enabled(auth_cmd, fun reg_authmod/1),
     if_cmd_enabled(acl_cmd,  fun reg_aclmod/1),
   %%  emqx_auth_redis_cfg:register(),
