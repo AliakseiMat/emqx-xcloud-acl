@@ -41,6 +41,7 @@ if_cmd_enabled(Par, Fun) ->
     emqx_logger:error("if_cmd_enabled Par:~w", [Par]),
     emqx_logger:error("application:get_env output:~w", [application:get_env(?APP, Par)]),
     emqx_logger:error("application:get_env all output:~w", [application:get_env(?APP)]),
+emqx_logger:error("application:get_env all-all output:~w", [application:get_all_env()]),
     case application:get_env(?APP, Par) of
         {ok, Cmd} -> Fun(Cmd);
         undefined -> ok
