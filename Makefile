@@ -33,4 +33,4 @@ include erlang.mk
 app:: rebar.config
 
 app.config::
-	./deps/cuttlefish/cuttlefish -l info -e etc/ -c etc/emqx_auth_redis.conf -i priv/emqx_auth_redis.schema -d data
+	./deps/cuttlefish/cuttlefish -l info -e etc/ -c etc/emqx_xcloud_acl.conf -i priv/emqx_xcloud_acl.schema -d data
