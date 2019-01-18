@@ -29,6 +29,7 @@ start_link() ->
 init([]) ->
     emqx_logger:error("Supervisor xcloud acl init started ..."),
     {ok, Server} = application:get_env(?APP, server),
-    PoolSpec = ecpool:pool_spec(?APP, ?APP, emqx_auth_redis_cli, Server),
+    emqx_logger:error("Supervisor init Server:~w", [Server]),
+    PoolSpec = ecpool:pool_spec(?APP, ?APP, emqx_xcloud_redis_cli, Server),
     {ok, {{one_for_one, 10, 100}, [PoolSpec]}}.
 
