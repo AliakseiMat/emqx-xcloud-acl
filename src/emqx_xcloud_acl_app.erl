@@ -30,12 +30,12 @@ start(_StartType, _StartArgs) ->
 
 stop(_State) ->
   %%  emqx_access_control:unregister_mod(auth, emqx_auth_redis),
-    emqx_access_control:unregister_mod(acl, emqx_acl_xcloud).
+    emqx_access_control:unregister_mod(acl, emqx_xcloud_acl).
   %%  emqx_auth_redis_cfg:unregister().
 
 reg_aclmod(AclCmd) ->
     emqx_logger:error("reg_aclmod AclCmd:~w", [AclCmd]),
-    emqx_access_control:register_mod(acl, emqx_acl_xcloud, AclCmd).
+    emqx_access_control:register_mod(acl, emqx_xcloud_acl, AclCmd).
 
 if_cmd_enabled(Par, Fun) ->
     emqx_logger:error("if_cmd_enabled Par:~w", [Par]),
