@@ -24,7 +24,7 @@ start(_StartType, _StartArgs) ->
     emqx_logger:error("Plugin xcloud acl started ..."),
     {ok, Sup} = emqx_xcloud_acl_sup:start_link(),
  %%   if_cmd_enabled(auth_cmd, fun reg_authmod/1),
-    if_cmd_enabled(acl_cmd,  fun reg_aclmod/1),
+    if_cmd_enabled(acl_cmd2,  fun reg_aclmod/1),
   %%  emqx_auth_redis_cfg:register(),
     {ok, Sup}.
 
