@@ -24,7 +24,7 @@ start(_StartType, _StartArgs) ->
     emqx_logger:error("Plugin xcloud acl started ..."),
     {ok, Sup} = emqx_xcloud_acl_sup:start_link(),
  %%   if_cmd_enabled(auth_cmd, fun reg_authmod/1),
-    if_cmd_enabled(acl_cmd2,  fun reg_aclmod/1),
+    if_cmd_enabled(acl_cmd,  fun reg_aclmod/1),
   %%  emqx_auth_redis_cfg:register(),
     {ok, Sup}.
 
@@ -40,6 +40,7 @@ reg_aclmod(AclCmd) ->
 if_cmd_enabled(Par, Fun) ->
     emqx_logger:error("if_cmd_enabled Par:~w", [Par]),
     emqx_logger:error("application:get_env output:~w", [application:get_env(?APP, Par)]),
+    emqx_logger:error("application:get_env all output:~w", [application:get_env(?APP)]),
     case application:get_env(?APP, Par) of
         {ok, Cmd} -> Fun(Cmd);
         undefined -> ok
