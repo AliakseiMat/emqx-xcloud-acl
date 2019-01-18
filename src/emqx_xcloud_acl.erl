@@ -29,7 +29,8 @@ check_acl({#{username := <<$$, _/binary>>}, _PubSub, _Topic}, _State) ->
     emqx_logger:error("Plugin check_acl:"),
     ignore;
 check_acl({Credetials, PubSub, Topic}, #{acl_cmd := AclCmd}) ->
-    emqx_logger:error("Plugin check_acl2:"),
+    emqx_logger:error("Plugin check_acl2 AclCmd:~w", [AclCmd]),
+    emqx_logger:error("Plugin check_acl2 Credetials:~w", [Credetials]),
     case emqx_auth_redis_cli:q(AclCmd, Credetials) of
         {ok, []} -> ignore;
         {ok, Rules} ->
