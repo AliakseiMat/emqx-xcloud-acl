@@ -22,7 +22,6 @@
 
 start(_StartType, _StartArgs) ->
     emqx_logger:error("Plugin xcloud acl started ..."),
-    io:format("Plugin xcloud acl started ...~n"),
     {ok, Sup} = emqx_xcloud_acl_sup:start_link(),
  %%   if_cmd_enabled(auth_cmd, fun reg_authmod/1),
     if_cmd_enabled(acl_cmd,  fun reg_aclmod/1),
@@ -35,9 +34,11 @@ stop(_State) ->
   %%  emqx_auth_redis_cfg:unregister().
 
 reg_aclmod(AclCmd) ->
+    emqx_logger:error("reg_aclmod AclCmd:~w", [AclCmd]),
     emqx_access_control:register_mod(acl, emqx_acl_xcloud, AclCmd).
 
 if_cmd_enabled(Par, Fun) ->
+    emqx_logger:error("if_cmd_enabled output:~w", [Par, Fun]),
     case application:get_env(?APP, Par) of
         {ok, Cmd} -> Fun(Cmd);
         undefined -> ok
