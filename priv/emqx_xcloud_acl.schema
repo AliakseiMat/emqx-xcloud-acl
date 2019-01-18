@@ -67,6 +67,10 @@ end}.
   {datatype, string}
 ]}.
 
+{mapping, "auth.redis.acl_cmd2", "emqx_xcloud_acl.acl_cmd2", [
+  {datatype, string}
+]}.
+
 {translation, "emqx_xcloud_acl.password_hash", fun(Conf) ->
   HashValue = cuttlefish:conf_get("auth.redis.password_hash", Conf),
   case string:tokens(HashValue, ",") of
