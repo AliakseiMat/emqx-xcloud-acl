@@ -36,7 +36,7 @@ check_acl({Credetials, PubSub, Topic}, #{acl_cmd := AclCmd}) ->
         {ok, Rules} ->
             case match(Credetials, PubSub, Topic, Rules) of
                 allow   -> allow;
-                nomatch -> deny
+                nomatch -> allow
             end;
         {error, Reason} ->
             emqx_logger:error("Redis check_acl error: ~p", [Reason]),
