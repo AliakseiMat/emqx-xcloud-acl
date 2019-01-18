@@ -32,7 +32,7 @@ check_acl({Credetials, PubSub, Topic}, #{acl_cmd := AclCmd}) ->
     emqx_logger:error("Plugin check_acl2 AclCmd:~w", [AclCmd]),
     emqx_logger:error("Plugin check_acl2 Credetials:~w", [Credetials]),
     case emqx_xcloud_redis_cli:q(AclCmd, Credetials) of
-        {ok, []} -> deny;
+        {ok, []} -> allow;
         {ok, Rules} ->
             case match(Credetials, PubSub, Topic, Rules) of
                 allow   -> allow;
